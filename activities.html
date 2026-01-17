@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities - John Matthew Leynes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .activities-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .activities-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .activities-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .activity-category {
+            margin-bottom: 4rem;
+        }
+
+        .activity-category h3 {
+            font-size: 2rem;
+            color: #764ba2;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .activity-item {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .activity-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .activity-item h4 {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-role {
+            color: #764ba2;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-date {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .activity-item li {
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: #555;
+        }
+
+        .activity-item li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-download {
+            background: #10b981;
+            color: white;
+            margin: 1rem 0;
+        }
+
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .activities-section h2 {
+                font-size: 2rem;
+            }
+
+            .activity-category h3 {
+                font-size: 1.5rem;
+            }
+
+            .activity-item h4 {
+                font-size: 1.25rem;
+            }
+
+            .activity-item {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>John Matthew Leynes</h1>
+            <p class="subtitle">Software Developer | Tech Enthusiast</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                    <li><a href="activities.html" class="active">Activities</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="activities-section">
+            <div class="container">
+                <h2>Extracurricular Activities</h2>
+                <p class="section-intro">Beyond coding, I actively participate in tech communities, competitions, and volunteer initiatives that help me grow and give back.</p>
+                
+                <div class="activities-container">
+                    <div class="activity-category">
+                        <h3>🏆 Hackathons & Competitions</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <h4>Global Hack Week 2024</h4>
+                                <p class="activity-role">Team Lead & Full-Stack Developer</p>
+                                <p class="activity-date">March 2024</p>
+                                <ul>
+                                    <li>Led a team of 4 developers to build an AI-powered mental health chatbot</li>
+                                    <li>Won 2nd place out of 150+ participating teams</li>
+                                    <li>Implemented natural language processing using OpenAI API</li>
+                                    <li>Presented solution to panel of industry experts</li>
+                                </ul>
+                            </div>
+
+                            <div class="activity-item">
+                                <h4>CodeJam University Championship</h4>
+                                <p class="activity-role">Participant</p>
+                                <p class="activity-date">November 2023</p>
+                                <ul>
+                                    <li>Competed in algorithmic problem-solving competition</li>
+                                    <li>Ranked in top 15% of 1000+ participants</li>
+                                    <li>Solved complex data structures and algorithms challenges</li>
+                                </ul>
+                            </div>
+
+                            <div class="activity-item">
+                                <h4>StartupWeekend Tech Edition</h4>
+                                <p class="activity-role">Developer & Presenter</p>
+                                <p class="activity-date">August 2023</p>
+                                <ul>
+                                    <li>Developed MVP for sustainable tech startup in 54 hours</li>
+                                    <li>Pitched business idea to investors and mentors</li>
+                                    <li>Received "Best Technical Implementation" award</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-category">
+                        <h3>👥 Clubs & Organizations</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <h4>Computer Science Society</h4>
+                                <p class="activity-role">Vice President</p>
+                                <p class="activity-date">September 2023 - Present</p>
+                                <ul>
+                                    <li>Organize weekly coding workshops and tech talks for 100+ members</li>
+                                    <li>Coordinate collaboration with industry partners for guest lectures</li>
+                                    <li>Mentor 15+ junior members in web development and career guidance</li>
+                                    <li>Increased club membership by 40% through social media campaigns</li>
+                                </ul>
+                            </div>
+
+                            <div class="activity-item">
+                                <h4>Open Source Developers Community</h4>
+                                <p class="activity-role">Active Contributor</p>
+                                <p class="activity-date">January 2023 - Present</p>
+                                <ul>
+                                    <li>Contributed to 5+ open-source projects on GitHub</li>
+                                    <li>Fixed bugs and added features to popular repositories</li>
+                                    <li>Participated in Hacktoberfest 2023 and 2024</li>
+                                    <li>Mentored newcomers in making their first contributions</li>
+                                </ul>
+                            </div>
+
+                            <div class="activity-item">
+                                <h4>Google Developer Student Club</h4>
+                                <p class="activity-role">Core Team Member</p>
+                                <p class="activity-date">August 2022 - June 2023</p>
+                                <ul>
+                                    <li>Conducted workshops on Firebase and Google Cloud Platform</li>
+                                    <li>Organized Solution Challenge with 50+ participants</li>
+                                    <li>Created educational content for social media channels</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-category">
+                        <h3>🤝 Volunteer Work</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <h4>Code for Good Initiative</h4>
+                                <p class="activity-role">Volunteer Developer</p>
+                                <p class="activity-date">May 2023 - Present</p>
+                                <ul>
+                                    <li>Built website for local non-profit organization serving underprivileged communities</li>
+                                    <li>Provided pro-bono technical support and maintenance</li>
+                                    <li>Trained staff on content management and basic web updates</li>
+                                    <li>Helped organization increase online donations by 60%</li>
+                                </ul>
+                            </div>
+
+                            <div class="activity-item">
+                                <h4>Tech Education Outreach Program</h4>
+                                <p class="activity-role">Instructor & Mentor</p>
+                                <p class="activity-date">January 2023 - Present</p>
+                                <ul>
+                                    <li>Teach basic programming to high school students from underserved areas</li>
+                                    <li>Developed curriculum for introductory Python and web development courses</li>
+                                    <li>Mentored 25+ students in completing their first coding projects</li>
+                                    <li>Volunteered 100+ hours over 12 months</li>
+                                </ul>
+                            </div>
+
+                            <div class="activity-item">
+                                <h4>Community Technology Workshop</h4>
+                                <p class="activity-role">Workshop Facilitator</p>
+                                <p class="activity-date">September 2022 - December 2022</p>
+                                <ul>
+                                    <li>Organized free coding workshops for local community members</li>
+                                    <li>Taught basic HTML, CSS, and JavaScript to 40+ participants</li>
+                                    <li>Helped participants build their first personal websites</li>
+                                    <li>Created beginner-friendly learning materials and resources</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3>Let's Connect</h3>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:johnmatthew.leynes@email.com">johnmatthew.leynes@email.com</a></p>
+                <p>GitHub: <a href="https://github.com/jmleynes" target="_blank">github.com/jmleynes</a></p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/johnmatthewleynes" target="_blank">linkedin.com/in/johnmatthewleynes</a></p>
+            </div>
+            <a href="assets/resume.pdf" class="btn btn-download" download>Download Resume</a>
+            <p class="copyright">&copy; 2025 John Matthew Leynes. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
