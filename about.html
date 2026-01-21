@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - John Matthew Leynes</title>
+    <title>John Matthew Leynes - Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -63,107 +63,187 @@
             background: rgba(255,255,255,0.2);
         }
 
-        .about-section {
+        /* Game Section Styles */
+        .game-section {
+            background: #2c3e50;
             padding: 4rem 0;
-            background: white;
-        }
-
-        .about-section h2 {
-            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 3rem;
-            color: #667eea;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .profile-image {
-            position: sticky;
-            top: 2rem;
-        }
-
-        .profile-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .about-text h3 {
-            color: #764ba2;
-            font-size: 1.75rem;
-            margin-top: 2rem;
+        .game-section h2 {
+            color: #9bbc0f;
+            font-size: 2.5em;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .about-text h3:first-child {
-            margin-top: 0;
+        .game-section p {
+            color: #9bbc0f;
+            font-size: 1.2em;
+            margin-bottom: 2rem;
         }
 
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            text-align: justify;
-        }
-
-        .strengths-list {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .strengths-list li {
-            background: #f9fafb;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            border-left: 4px solid #667eea;
+        .score-board {
+            background-color: #0f380f;
+            color: #9bbc0f;
+            padding: 10px 20px;
+            margin: 0 auto 10px;
             border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: inline-block;
         }
 
-        .strengths-list strong {
-            color: #667eea;
+        canvas {
+            background-color: #9bbc0f;
+            border: 8px solid #0f380f;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 100%;
+            height: auto;
             display: block;
-            margin-bottom: 0.25rem;
+            margin: 0 auto;
         }
 
-        footer {
-            background: #1f2937;
-            color: white;
-            padding: 3rem 0;
+        .mobile-controls {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .control-btn {
+            background-color: #0f380f;
+            color: #9bbc0f;
+            border: 3px solid #9bbc0f;
+            border-radius: 10px;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.1s;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:active {
+            background-color: #9bbc0f;
+            color: #0f380f;
+            transform: scale(0.95);
+        }
+
+        .control-btn.up { grid-column: 2; grid-row: 1; }
+        .control-btn.left { grid-column: 1; grid-row: 2; }
+        .control-btn.center {
+            grid-column: 2;
+            grid-row: 2;
+            background-color: #306230;
+            border-color: #0f380f;
+            font-size: 1em;
+            cursor: default;
+        }
+        .control-btn.right { grid-column: 3; grid-row: 2; }
+        .control-btn.down { grid-column: 2; grid-row: 3; }
+
+        .keyboard-controls {
+            margin-top: 20px;
+            color: #9bbc0f;
+            font-size: 0.9em;
+        }
+
+        .keyboard-controls p {
+            margin: 5px 0;
+        }
+
+        #gameOverScreen {
+            position: absolute;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(15, 56, 15, 0.95);
+            color: #9bbc0f;
+            border-radius: 10px;
+            padding: 40px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        #gameOverScreen.show {
+            display: flex;
+        }
+
+        #gameOverScreen h3 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        #gameOverScreen p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .restart-btn {
+            background-color: #9bbc0f;
+            color: #0f380f;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .restart-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .restart-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            background: white;
+            padding: 4rem 0;
             text-align: center;
         }
 
-        footer h3 {
+        .intro-section h2 {
+            font-size: 2.5rem;
+            color: #667eea;
             margin-bottom: 1.5rem;
         }
 
-        .contact-info {
-            margin: 2rem 0;
+        .intro-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
         }
 
-        .contact-info p {
-            margin: 0.5rem 0;
-        }
-
-        .contact-info a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
             padding: 1rem 2rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -171,28 +251,27 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .btn-download {
-            background: #10b981;
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            margin: 1rem 0;
         }
 
-        .copyright {
-            margin-top: 2rem;
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
             opacity: 0.7;
             font-size: 0.9rem;
-        }
-
-        @media (max-width: 968px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-image {
-                position: static;
-                max-width: 300px;
-                margin: 0 auto;
-            }
         }
 
         @media (max-width: 768px) {
@@ -204,15 +283,24 @@
                 gap: 1rem;
             }
 
-            .about-section h2 {
+            .game-section h2 {
+                font-size: 2em;
+            }
+
+            .mobile-controls {
+                grid-template-columns: repeat(3, 70px);
+                grid-template-rows: repeat(3, 70px);
+            }
+
+            .control-btn {
+                font-size: 1.5em;
+            }
+
+            .intro-section h2 {
                 font-size: 2rem;
             }
 
-            .about-text h3 {
-                font-size: 1.5rem;
-            }
-
-            .about-text p {
+            .intro-section p {
                 font-size: 1rem;
             }
         }
@@ -225,8 +313,8 @@
             <p class="subtitle">Software Developer | Tech Enthusiast</p>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="certifications.html">Certifications</a></li>
                     <li><a href="activities.html">Activities</a></li>
@@ -236,55 +324,52 @@
     </header>
 
     <main>
-        <section class="about-section">
+        <!-- Introduction Section -->
+        <section class="intro-section">
             <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <div class="profile-image">
-                        <img src="assets/images/profile.jpg" alt="John Matthew Leynes">
-                    </div>
-                    <div class="about-text">
-                        <h3>My Journey</h3>
-                        <p>Hello! I'm John Matthew Leynes, a passionate software developer with a strong foundation in both frontend and backend technologies. My journey in tech began with a curiosity about how things work, which evolved into a deep commitment to building meaningful digital solutions.</p>
-                        
-                        <p>From my first "Hello World" program to developing full-stack applications, I've been constantly amazed by the power of technology to transform ideas into reality. Every line of code I write is driven by the desire to create something that makes a difference.</p>
-                        
-                        <h3>Career Goals</h3>
-                        <p>I aspire to become a full-stack architect who bridges the gap between innovative ideas and practical implementations. My goal is to contribute to projects that make a real difference in people's lives while continuously expanding my technical expertise and leadership capabilities.</p>
-                        
-                        <p>In the next five years, I envision myself leading development teams, architecting scalable solutions, and mentoring aspiring developers. I'm particularly interested in areas like cloud computing, artificial intelligence, and sustainable technology solutions.</p>
-                        
-                        <h3>Core Strengths</h3>
-                        <ul class="strengths-list">
-                            <li>
-                                <strong>Problem Solving</strong>
-                                Analytical approach to breaking down complex challenges into manageable solutions. I thrive on finding elegant solutions to difficult problems.
-                            </li>
-                            <li>
-                                <strong>Quick Learner</strong>
-                                Rapidly adapt to new technologies and frameworks. I'm always excited to expand my skill set and stay current with industry trends.
-                            </li>
-                            <li>
-                                <strong>Team Collaboration</strong>
-                                Effective communication and teamwork in agile environments. I believe the best solutions come from diverse perspectives working together.
-                            </li>
-                            <li>
-                                <strong>Attention to Detail</strong>
-                                Commitment to writing clean, maintainable, and well-documented code. Quality matters as much as functionality.
-                            </li>
-                            <li>
-                                <strong>User-Centric Design</strong>
-                                Focus on creating intuitive and accessible user experiences. Technology should empower users, not confuse them.
-                            </li>
-                        </ul>
+                <h2>Welcome to My Portfolio</h2>
+                <p>
+                    I'm a passionate software developer with a strong foundation in both frontend and backend technologies. 
+                    I love building interactive experiences and I'm always excited to take on new challenges 
+                    in web development, software engineering, and everything in between.
+                </p>
+                <div class="cta-buttons">
+                    <a href="about.html" class="btn btn-primary">Learn More About Me</a>
+                    <a href="projects.html" class="btn btn-secondary">View My Projects</a>
+                </div>
+            </div>
+        </section>
 
-                        <h3>What Drives Me</h3>
-                        <p>I'm motivated by the endless possibilities that technology offers to solve real-world problems. Whether it's optimizing performance, improving user experience, or learning a new framework, I approach each challenge with enthusiasm and dedication.</p>
-                        
-                        <p>I believe in continuous learning and giving back to the tech community through mentorship and open-source contributions. The collaborative nature of the developer community inspires me daily, and I'm committed to contributing positively to this ecosystem.</p>
-
-                        <p>When I'm not coding, you'll find me exploring new technologies, participating in hackathons, or sharing knowledge through tech blogs and community events. I'm always open to new opportunities, collaborations, and conversations about technology and innovation.</p>
+        <!-- Snake Game Section -->
+        <section class="game-section">
+            <div class="container">
+                <h2>🐍 SNAKE GAME</h2>
+                <p>Try out this classic game I built! Use arrow keys or the buttons below.</p>
+                
+                <div class="score-board">
+                    Score: <span id="score">0</span>
+                </div>
+                
+                <div style="position: relative; display: inline-block;">
+                    <canvas id="gameCanvas" width="500" height="500"></canvas>
+                    <div id="gameOverScreen">
+                        <h3>GAME OVER!</h3>
+                        <p>Final Score: <span id="finalScore">0</span></p>
+                        <button class="restart-btn" onclick="restartGame()">PLAY AGAIN</button>
                     </div>
+                </div>
+                
+                <div class="mobile-controls">
+                    <button class="control-btn up" id="btnUp">▲</button>
+                    <button class="control-btn left" id="btnLeft">◄</button>
+                    <div class="control-btn center">🐍</div>
+                    <button class="control-btn right" id="btnRight">►</button>
+                    <button class="control-btn down" id="btnDown">▼</button>
+                </div>
+
+                <div class="keyboard-controls">
+                    <p><strong>Desktop:</strong> Arrow Keys or WASD</p>
+                    <p><strong>Mobile:</strong> Use buttons above</p>
                 </div>
             </div>
         </section>
@@ -292,15 +377,228 @@
 
     <footer>
         <div class="container">
-            <h3>Let's Connect</h3>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:johnmatthew.leynes@email.com">johnmatthew.leynes@email.com</a></p>
-                <p>GitHub: <a href="https://github.com/jmleynes" target="_blank">github.com/jmleynes</a></p>
-                <p>LinkedIn: <a href="https://linkedin.com/in/johnmatthewleynes" target="_blank">linkedin.com/in/johnmatthewleynes</a></p>
-            </div>
-            <a href="assets/resume.pdf" class="btn btn-download" download>Download Resume</a>
-            <p class="copyright">&copy; 2025 John Matthew Leynes. All rights reserved.</p>
+            <p>&copy; 2025 John Matthew Leynes. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+        const finalScoreElement = document.getElementById('finalScore');
+        const gameOverScreen = document.getElementById('gameOverScreen');
+
+        const TILE_SIZE = 20;
+        const GRID_WIDTH = 25;
+        const GRID_HEIGHT = 25;
+        const GAME_SPEED = 100;
+
+        let snake = [];
+        let food = {};
+        let direction = 'RIGHT';
+        let nextDirection = 'RIGHT';
+        let running = false;
+        let gameOver = false;
+        let score = 0;
+        let gameLoop = null;
+
+        function init() {
+            canvas.width = GRID_WIDTH * TILE_SIZE;
+            canvas.height = GRID_HEIGHT * TILE_SIZE;
+            setupMobileControls();
+            startGame();
+        }
+
+        function setupMobileControls() {
+            const btnUp = document.getElementById('btnUp');
+            const btnDown = document.getElementById('btnDown');
+            const btnLeft = document.getElementById('btnLeft');
+            const btnRight = document.getElementById('btnRight');
+
+            [btnUp, btnDown, btnLeft, btnRight].forEach(btn => {
+                btn.addEventListener('touchstart', (e) => e.preventDefault());
+            });
+
+            btnUp.addEventListener('click', () => {
+                if (running && direction !== 'DOWN') nextDirection = 'UP';
+            });
+
+            btnDown.addEventListener('click', () => {
+                if (running && direction !== 'UP') nextDirection = 'DOWN';
+            });
+
+            btnLeft.addEventListener('click', () => {
+                if (running && direction !== 'RIGHT') nextDirection = 'LEFT';
+            });
+
+            btnRight.addEventListener('click', () => {
+                if (running && direction !== 'LEFT') nextDirection = 'RIGHT';
+            });
+
+            btnUp.addEventListener('touchstart', (e) => {
+                if (running && direction !== 'DOWN') nextDirection = 'UP';
+            });
+
+            btnDown.addEventListener('touchstart', (e) => {
+                if (running && direction !== 'UP') nextDirection = 'DOWN';
+            });
+
+            btnLeft.addEventListener('touchstart', (e) => {
+                if (running && direction !== 'RIGHT') nextDirection = 'LEFT';
+            });
+
+            btnRight.addEventListener('touchstart', (e) => {
+                if (running && direction !== 'LEFT') nextDirection = 'RIGHT';
+            });
+        }
+
+        function startGame() {
+            snake = [
+                { x: 5, y: 5 },
+                { x: 4, y: 5 },
+                { x: 3, y: 5 }
+            ];
+            
+            direction = 'RIGHT';
+            nextDirection = 'RIGHT';
+            score = 0;
+            gameOver = false;
+            running = true;
+            
+            updateScore();
+            gameOverScreen.classList.remove('show');
+            spawnFood();
+            
+            if (gameLoop) clearInterval(gameLoop);
+            gameLoop = setInterval(update, GAME_SPEED);
+        }
+
+        function spawnFood() {
+            let validPosition = false;
+            while (!validPosition) {
+                food = {
+                    x: Math.floor(Math.random() * GRID_WIDTH),
+                    y: Math.floor(Math.random() * GRID_HEIGHT)
+                };
+                validPosition = !snake.some(segment => 
+                    segment.x === food.x && segment.y === food.y
+                );
+            }
+        }
+
+        function update() {
+            if (!running) return;
+
+            direction = nextDirection;
+            const head = { ...snake[0] };
+
+            switch (direction) {
+                case 'UP': head.y--; break;
+                case 'DOWN': head.y++; break;
+                case 'LEFT': head.x--; break;
+                case 'RIGHT': head.x++; break;
+            }
+
+            if (head.x < 0 || head.x >= GRID_WIDTH || 
+                head.y < 0 || head.y >= GRID_HEIGHT) {
+                endGame();
+                return;
+            }
+
+            if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+                endGame();
+                return;
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                updateScore();
+                spawnFood();
+            } else {
+                snake.pop();
+            }
+
+            draw();
+        }
+
+        function draw() {
+            ctx.fillStyle = '#9bbc0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#306230';
+            ctx.fillRect(
+                food.x * TILE_SIZE,
+                food.y * TILE_SIZE,
+                TILE_SIZE,
+                TILE_SIZE
+            );
+
+            snake.forEach((segment, index) => {
+                ctx.fillStyle = index === 0 ? '#0f380f' : '#306230';
+                ctx.fillRect(
+                    segment.x * TILE_SIZE,
+                    segment.y * TILE_SIZE,
+                    TILE_SIZE,
+                    TILE_SIZE
+                );
+            });
+        }
+
+        function endGame() {
+            running = false;
+            gameOver = true;
+            clearInterval(gameLoop);
+            finalScoreElement.textContent = score;
+            gameOverScreen.classList.add('show');
+        }
+
+        function updateScore() {
+            scoreElement.textContent = score;
+        }
+
+        function restartGame() {
+            startGame();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (gameOver && e.code === 'Space') {
+                restartGame();
+                return;
+            }
+
+            if (!running) return;
+
+            switch (e.key) {
+                case 'ArrowUp':
+                case 'w':
+                case 'W':
+                    if (direction !== 'DOWN') nextDirection = 'UP';
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                case 's':
+                case 'S':
+                    if (direction !== 'UP') nextDirection = 'DOWN';
+                    e.preventDefault();
+                    break;
+                case 'ArrowLeft':
+                case 'a':
+                case 'A':
+                    if (direction !== 'RIGHT') nextDirection = 'LEFT';
+                    e.preventDefault();
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                case 'D':
+                    if (direction !== 'LEFT') nextDirection = 'RIGHT';
+                    e.preventDefault();
+                    break;
+            }
+        });
+
+        init();
+    </script>
 </body>
 </html>
